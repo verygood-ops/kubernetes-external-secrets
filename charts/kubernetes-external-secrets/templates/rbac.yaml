@@ -11,7 +11,7 @@ metadata:
 rules:
   - apiGroups: [""]
     resources: ["secrets"]
-    verbs: ["create", "update"]
+    verbs: ["create", "update"{{ if .Values.env["POLL_INTERNAL_SECRETS"] == "true" }}, "list"{{- end}}]
   - apiGroups: [""]
     resources: ["namespaces"]
     verbs: ["get", "watch", "list"]
